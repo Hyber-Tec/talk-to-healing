@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 
-import { clinicians, languages } from "@/lib/site";
+import { clinicians, languages, listNames } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 /** "Hello" in each language the clinical team speaks, with the language's own name. */
@@ -27,8 +27,7 @@ function speakers(language: string) {
     .filter((member) => member.languages.includes(language))
     .map((member) => member.name.split(" ")[0]);
   if (names.length === clinicians.length) return `Spoken by all ${names.length} of our therapists`;
-  if (names.length === 1) return `Spoken by ${names[0]}`;
-  return `Spoken by ${names.slice(0, -1).join(", ")} and ${names.at(-1)}`;
+  return `Spoken by ${listNames(names)}`;
 }
 
 export function Greetings() {

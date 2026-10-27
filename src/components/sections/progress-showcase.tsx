@@ -1,3 +1,8 @@
+/**
+ * PARKED: not rendered on any page.
+ * The practice has no client portal yet, so this tablet showcase of a sample progress report stays out of the site.
+ * To bring it back, render <ProgressShowcase /> in src/app/page.tsx (it was placed after <Approach />).
+ */
 import { ContainerScroll } from "@/components/motion/container-scroll-animation";
 import { ProgressReport } from "@/components/sections/progress-report";
 

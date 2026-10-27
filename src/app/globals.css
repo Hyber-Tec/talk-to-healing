@@ -22,6 +22,8 @@
   --color-sage: #e3eae0;
   --color-sage-deep: #7e9886;
   --color-blush: #f2e3dc;
+  /* Soft terracotta for form errors: clear without the alarm of pure red. */
+  --color-clay: #a5452f;
 
   --animate-drift-1: drift-1 26s ease-in-out infinite;
   --animate-drift-2: drift-2 32s ease-in-out infinite;
@@ -125,7 +127,7 @@
   --muted-foreground: #56696b;
   --accent: #e3eae0;
   --accent-foreground: #294b52;
-  --destructive: oklch(0.577 0.245 27.325);
+  --destructive: #a5452f;
   --border: #e7ddcf;
   --input: #e7ddcf;
   --ring: #a9824f;
@@ -186,17 +188,21 @@ html.lenis body {
   overflow: hidden;
 }
 
-@layer utilities {
-  /* Fine paper grain that keeps large cream areas from feeling flat. */
-  .bg-grain {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.29 0 0 0 0 0.32 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-  .text-balance {
-    text-wrap: balance;
-  }
-  .text-pretty {
-    text-wrap: pretty;
-  }
+/*
+ * An arch: a true semicircle on top with softly rounded bottom corners.
+ * A "full" top radius would make the browser shrink every corner to fit, squaring the bottom,
+ * so the top radius is exactly half the width, measured through the parent (`arch-container`).
+ */
+@utility arch-container {
+  container-type: inline-size;
+}
+@utility arch {
+  border-radius: 50cqw 50cqw 2.25rem 2.25rem;
+}
+
+/* Fine paper grain that keeps large cream areas from feeling flat. */
+@utility bg-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.29 0 0 0 0 0.32 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 @media (prefers-reduced-motion: reduce) {

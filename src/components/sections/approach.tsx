@@ -6,7 +6,7 @@ import { BlurFade } from "@/components/motion/blur-fade";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { Greetings } from "@/components/sections/greetings";
 import { clinicians, focusAreas, languages, type FocusKey } from "@/lib/site";
-import { asset } from "@/lib/asset";
+import { photoOf } from "@/lib/asset";
 
 const icons: Record<FocusKey, IconType> = {
   lgbtq: PiRainbow,
@@ -68,7 +68,7 @@ export function Approach() {
                 </blockquote>
                 <figcaption className="mt-8 flex items-center gap-4">
                   <Image
-                    src={asset(`/team/${founder.slug}.jpg`)}
+                    src={photoOf(founder.slug)}
                     alt=""
                     width={56}
                     height={56}

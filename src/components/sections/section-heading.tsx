@@ -8,6 +8,7 @@ export function SectionHeading({
   align = "left",
   className,
   id,
+  as: Heading = "h2",
 }: {
   eyebrow: string;
   title: React.ReactNode;
@@ -15,6 +16,8 @@ export function SectionHeading({
   align?: "left" | "center";
   className?: string;
   id?: string;
+  /** The page's own title uses h1; every section below it uses the default h2. */
+  as?: "h1" | "h2";
 }) {
   const centered = align === "center";
   return (
@@ -32,12 +35,12 @@ export function SectionHeading({
         </p>
       </BlurFade>
       <BlurFade inView offset={10} blur="4px" duration={0.7} delay={0.08}>
-        <h2
+        <Heading
           id={id}
           className="mt-5 font-serif text-[2.4rem] leading-[1.08] font-normal tracking-[-0.02em] text-balance text-ink sm:text-5xl lg:text-[3.4rem]"
         >
           {title}
-        </h2>
+        </Heading>
       </BlurFade>
       {description && (
         <BlurFade inView offset={10} blur="4px" duration={0.7} delay={0.16}>

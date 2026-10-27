@@ -3,6 +3,7 @@ import type { IconType } from "react-icons";
 import { PiArrowRight, PiEnvelopeSimple, PiMapPin, PiPhone } from "react-icons/pi";
 
 import { BlurFade } from "@/components/motion/blur-fade";
+import { BookingButton } from "@/components/booking/booking-button";
 import { Button } from "@/components/ui/button";
 import { site } from "@/lib/site";
 import { asset } from "@/lib/asset";
@@ -65,19 +66,16 @@ export function ContactCta() {
               take the next step at your own pace.
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <Button
-                asChild
+              <BookingButton
                 size="lg"
                 className="group h-13 rounded-full bg-sand px-7 text-base text-ink-deep hover:bg-sand/90"
               >
-                <a href={site.bookingUrl} target="_blank" rel="noopener noreferrer">
-                  Book a free consultation
-                  <PiArrowRight
-                    className="size-4.5 transition-transform duration-300 group-hover:translate-x-0.5"
-                    aria-hidden
-                  />
-                </a>
-              </Button>
+                Book a free consultation
+                <PiArrowRight
+                  className="size-4.5 transition-transform duration-300 group-hover:translate-x-0.5"
+                  aria-hidden
+                />
+              </BookingButton>
               <Button
                 asChild
                 size="lg"

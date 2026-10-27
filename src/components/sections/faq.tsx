@@ -4,7 +4,7 @@ import { PiChatsCircle } from "react-icons/pi";
 import { BlurFade } from "@/components/motion/blur-fade";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
+import { BookingButton } from "@/components/booking/booking-button";
 import { faqs, site } from "@/lib/site";
 
 /** Turns email addresses and phone numbers inside plain-text answers into links. */
@@ -56,11 +56,7 @@ export function Faq() {
                 </a>
                 .
               </p>
-              <Button asChild className="mt-5 h-11 rounded-full px-5">
-                <a href={site.bookingUrl} target="_blank" rel="noopener noreferrer">
-                  Book a free consultation
-                </a>
-              </Button>
+              <BookingButton className="mt-5 h-11 rounded-full px-5">Book a free consultation</BookingButton>
             </div>
           </BlurFade>
         </div>

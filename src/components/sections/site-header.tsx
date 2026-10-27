@@ -6,6 +6,8 @@ import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import { PiPhone } from "react-icons/pi";
 
 import { Logo } from "@/components/brand/logo";
+import { SectionLink } from "@/components/section-link";
+import { BookingButton } from "@/components/booking/booking-button";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetClose, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { nav, site } from "@/lib/site";
@@ -31,19 +33,19 @@ export function SiteHeader() {
             : "border border-transparent bg-transparent",
         )}
       >
-        <a href="#top" aria-label={`${site.name}, back to top`} className="rounded-full">
+        <SectionLink hash="#top" aria-label={`${site.name}, home`} className="rounded-full">
           <Logo />
-        </a>
+        </SectionLink>
 
         <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">
           {nav.map((item) => (
-            <a
+            <SectionLink
               key={item.href}
-              href={item.href}
+              hash={item.href}
               className="rounded-full px-3.5 py-2 text-[0.92rem] font-medium text-ink/80 transition-colors hover:bg-ink/5 hover:text-ink"
             >
               {item.label}
-            </a>
+            </SectionLink>
           ))}
         </nav>
 
@@ -55,11 +57,9 @@ export function SiteHeader() {
             <PiPhone className="size-4" aria-hidden />
             {site.phone.display}
           </a>
-          <Button asChild className="hidden h-11 rounded-full px-5 text-[0.92rem] sm:inline-flex">
-            <a href={site.bookingUrl} target="_blank" rel="noopener noreferrer">
-              Book a free consultation
-            </a>
-          </Button>
+          <BookingButton className="hidden h-11 rounded-full px-5 text-[0.92rem] sm:inline-flex">
+            Book a free consultation
+          </BookingButton>
 
           <Sheet>
             <SheetTrigger asChild>
@@ -79,21 +79,21 @@ export function SiteHeader() {
               <nav aria-label="Mobile" className="mt-10 flex flex-col">
                 {nav.map((item) => (
                   <SheetClose asChild key={item.href}>
-                    <a
-                      href={item.href}
+                    <SectionLink
+                      hash={item.href}
                       className="border-b border-border/80 py-4 font-serif text-2xl text-ink transition-colors hover:text-sand-deep"
                     >
                       {item.label}
-                    </a>
+                    </SectionLink>
                   </SheetClose>
                 ))}
               </nav>
               <div className="mt-auto flex flex-col gap-3">
-                <Button asChild size="lg" className="h-12 rounded-full text-base">
-                  <a href={site.bookingUrl} target="_blank" rel="noopener noreferrer">
+                <SheetClose asChild>
+                  <BookingButton size="lg" className="h-12 rounded-full text-base">
                     Book a free consultation
-                  </a>
-                </Button>
+                  </BookingButton>
+                </SheetClose>
                 <Button
                   asChild
                   size="lg"

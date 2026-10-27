@@ -6,9 +6,10 @@ import { motion, useReducedMotion, useScroll, useTransform } from "motion/react"
 import { PiArrowRight, PiChatsCircle, PiPhoneCall, PiShieldCheck, PiTranslate } from "react-icons/pi";
 
 import { TextEffect } from "@/components/motion/text-effect";
+import { BookingButton } from "@/components/booking/booking-button";
 import { Button } from "@/components/ui/button";
 import { clinicians, languages, site } from "@/lib/site";
-import { asset } from "@/lib/asset";
+import { photoOf } from "@/lib/asset";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -81,19 +82,16 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.9, ease }}
             className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
           >
-            <Button
-              asChild
+            <BookingButton
               size="lg"
               className="group h-13 rounded-full px-7 text-base shadow-[0_10px_30px_-10px_rgba(41,75,82,0.55)]"
             >
-              <a href={site.bookingUrl} target="_blank" rel="noopener noreferrer">
-                Book a free consultation
-                <PiArrowRight
-                  className="size-4.5 transition-transform duration-300 group-hover:translate-x-0.5"
-                  aria-hidden
-                />
-              </a>
-            </Button>
+              Book a free consultation
+              <PiArrowRight
+                className="size-4.5 transition-transform duration-300 group-hover:translate-x-0.5"
+                aria-hidden
+              />
+            </BookingButton>
             <Button
               asChild
               size="lg"
@@ -132,12 +130,12 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.1, delay: 0.2, ease }}
-            className="absolute inset-y-0 right-[2%] w-[78%] sm:w-[68%]"
+            className="arch-container absolute inset-y-0 right-[2%] w-[78%] sm:w-[68%]"
           >
-            <div className="absolute inset-0 translate-x-3.5 translate-y-3.5 rounded-t-full rounded-b-[2.25rem] bg-sand-soft" />
-            <div className="relative h-full overflow-hidden rounded-t-full rounded-b-[2.25rem] bg-linen ring-1 ring-ink/5">
+            <div className="absolute inset-0 translate-x-3.5 translate-y-3.5 arch bg-sand-soft" />
+            <div className="relative h-full overflow-hidden arch bg-linen ring-1 ring-ink/5">
               <Image
-                src={asset(`/team/${founder.slug}.jpg`)}
+                src={photoOf(founder.slug)}
                 alt={`${founder.name}, ${founder.credentials}, founder of ${site.shortName}`}
                 fill
                 loading="eager"
@@ -198,7 +196,7 @@ export function Hero() {
                   {stack.map((slug) => (
                     <Image
                       key={slug}
-                      src={asset(`/team/${slug}.jpg`)}
+                      src={photoOf(slug)}
                       alt=""
                       width={40}
                       height={40}
@@ -229,7 +227,7 @@ function HeroBackdrop() {
       <div className="absolute -top-[20%] -left-[10%] size-[46rem] animate-drift-1 rounded-full bg-[radial-gradient(closest-side,rgba(227,234,224,0.95),rgba(227,234,224,0))]" />
       <div className="absolute top-[5%] -right-[15%] size-[44rem] animate-drift-2 rounded-full bg-[radial-gradient(closest-side,rgba(239,224,201,0.9),rgba(239,224,201,0))]" />
       <div className="absolute -bottom-[25%] left-[25%] size-[40rem] animate-drift-3 rounded-full bg-[radial-gradient(closest-side,rgba(242,227,220,0.85),rgba(242,227,220,0))]" />
-      <div className="bg-grain absolute inset-0 opacity-70" />
+      <div className="absolute inset-0 bg-grain opacity-70" />
     </div>
   );
 }

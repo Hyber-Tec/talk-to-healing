@@ -26,7 +26,8 @@ The rules below are strict and apply to every developer and every AI session.
 
 - Every fact comes from the practice and lives in `src/lib/site.ts`.
 - Never invent testimonials, ratings, outcomes, or credentials. Counseling ethics codes restrict soliciting client testimonials.
-- Sample data (like the portal report) must be labeled as illustrative on screen.
+- Sample data (like the parked portal report) must be labeled as illustrative on screen.
+- The booking flow records preferences only. Never show invented availability, and never tell a visitor a request was sent when it was not.
 - Keep the crisis lines (988, 911, Georgia Crisis & Access Line) in the footer.
 
 ## Secrets and privacy
