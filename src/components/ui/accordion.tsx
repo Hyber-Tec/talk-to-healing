@@ -27,11 +27,14 @@ function AccordionTrigger({ className, children, ...props }: React.ComponentProp
         {...props}
       >
         {children}
-        <PiPlus
+        {/* The clipping wrapper keeps the rotated icon's corners from widening the trigger. */}
+        <span
           data-slot="accordion-trigger-icon"
           aria-hidden
-          className="pointer-events-none shrink-0 transition-transform duration-300 group-aria-expanded/accordion-trigger:rotate-45"
-        />
+          className="pointer-events-none flex shrink-0 items-center justify-center overflow-hidden"
+        >
+          <PiPlus className="size-full transition-transform duration-300 group-aria-expanded/accordion-trigger:rotate-45" />
+        </span>
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   );
