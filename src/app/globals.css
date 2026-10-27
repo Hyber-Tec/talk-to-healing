@@ -1,0 +1,210 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Talk To Heal brand palette, sampled from the logo:
+ * ink (#294B52) is the line art, sand (#DBBC90) is the leaf and heart fill.
+ * Cream, linen, sage and blush are the soft supporting tones from the current site.
+ */
+@theme {
+  --color-ink: #294b52;
+  --color-ink-deep: #1d373c;
+  --color-ink-soft: #56696b;
+  --color-sand: #dbbc90;
+  --color-sand-soft: #efe0c9;
+  --color-sand-deep: #8c6a3e;
+  --color-sand-bright: #a9824f;
+  --color-cream: #fbf7f0;
+  --color-linen: #f4ede2;
+  --color-sage: #e3eae0;
+  --color-sage-deep: #7e9886;
+  --color-blush: #f2e3dc;
+
+  --animate-drift-1: drift-1 26s ease-in-out infinite;
+  --animate-drift-2: drift-2 32s ease-in-out infinite;
+  --animate-drift-3: drift-3 38s ease-in-out infinite;
+  --animate-float: float 7s ease-in-out infinite;
+
+  @keyframes drift-1 {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+      transform: translate3d(6%, 8%, 0) scale(1.08);
+    }
+  }
+  @keyframes drift-2 {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0) scale(1.05);
+    }
+    50% {
+      transform: translate3d(-8%, -4%, 0) scale(0.95);
+    }
+  }
+  @keyframes drift-3 {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+      transform: translate3d(4%, -8%, 0) scale(1.1);
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-figtree);
+  --font-heading: var(--font-fraunces);
+  --font-serif: var(--font-fraunces);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: #fbf7f0;
+  --foreground: #22393e;
+  --card: #fffdf9;
+  --card-foreground: #22393e;
+  --popover: #fffdf9;
+  --popover-foreground: #22393e;
+  --primary: #294b52;
+  --primary-foreground: #fbf7f0;
+  --secondary: #f4ede2;
+  --secondary-foreground: #294b52;
+  --muted: #f4ede2;
+  --muted-foreground: #56696b;
+  --accent: #e3eae0;
+  --accent-foreground: #294b52;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #e7ddcf;
+  --input: #e7ddcf;
+  --ring: #a9824f;
+  --chart-1: #294b52;
+  --chart-2: #dbbc90;
+  --chart-3: #7e9886;
+  --chart-4: #a9824f;
+  --chart-5: #56696b;
+  --radius: 0.875rem;
+  --sidebar: #fbf7f0;
+  --sidebar-foreground: #22393e;
+  --sidebar-primary: #294b52;
+  --sidebar-primary-foreground: #fbf7f0;
+  --sidebar-accent: #f4ede2;
+  --sidebar-accent-foreground: #294b52;
+  --sidebar-border: #e7ddcf;
+  --sidebar-ring: #a9824f;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply scroll-pt-24 font-sans;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-background text-foreground;
+    text-rendering: optimizeLegibility;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  ::selection {
+    background: var(--color-sand-soft);
+    color: var(--color-ink-deep);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-sand-bright);
+    outline-offset: 3px;
+  }
+}
+
+/* Lenis smooth scrolling (https://github.com/darkroomengineering/lenis) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@layer utilities {
+  /* Fine paper grain that keeps large cream areas from feeling flat. */
+  .bg-grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.29 0 0 0 0 0.32 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
