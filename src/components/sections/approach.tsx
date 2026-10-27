@@ -72,7 +72,7 @@ export function Approach() {
                     alt=""
                     width={56}
                     height={56}
-                    className="size-14 rounded-full object-cover object-[50%_20%] ring-4 ring-white"
+                    className="size-14 shrink-0 rounded-full object-cover object-[50%_20%] ring-4 ring-white"
                   />
                   <span>
                     <span className="block font-serif text-lg leading-tight text-ink">

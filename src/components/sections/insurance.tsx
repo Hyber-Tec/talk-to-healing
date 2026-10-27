@@ -57,7 +57,7 @@ export function Insurance() {
               <span className="font-serif text-2xl text-ink">Plans we accept</span>
               <span className="text-sm font-medium text-ink-soft tabular-nums">{plans.length} plans</span>
             </p>
-            <ul className="mt-5 grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-4">
+            <ul className="mt-5 grid grid-cols-2 gap-2.5 md:grid-cols-4">
               {plans.map((plan) => (
                 <li
                   key={plan.name}

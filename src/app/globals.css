@@ -205,6 +205,18 @@ html.lenis body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.29 0 0 0 0 0.32 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
+/* Large monitors: grow the whole rem-based layout instead of leaving it as a narrow strip. */
+@media (min-width: 1800px) {
+  html {
+    font-size: 112.5%;
+  }
+}
+@media (min-width: 2300px) {
+  html {
+    font-size: 137.5%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

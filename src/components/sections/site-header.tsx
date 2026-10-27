@@ -42,7 +42,7 @@ export function SiteHeader() {
             <SectionLink
               key={item.href}
               hash={item.href}
-              className="rounded-full px-3.5 py-2 text-[0.92rem] font-medium text-ink/80 transition-colors hover:bg-ink/5 hover:text-ink"
+              className="rounded-full px-3 py-2 text-[0.92rem] font-medium whitespace-nowrap text-ink/80 transition-colors hover:bg-ink/5 hover:text-ink xl:px-3.5"
             >
               {item.label}
             </SectionLink>
@@ -52,7 +52,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <a
             href={site.phone.href}
-            className="hidden items-center gap-2 rounded-full px-3 py-2 text-[0.92rem] font-medium text-ink/80 transition-colors hover:text-ink md:inline-flex"
+            className="hidden items-center gap-2 rounded-full px-3 py-2 text-[0.92rem] font-medium whitespace-nowrap text-ink/80 transition-colors hover:text-ink md:inline-flex lg:hidden xl:inline-flex"
           >
             <PiPhone className="size-4" aria-hidden />
             {site.phone.display}

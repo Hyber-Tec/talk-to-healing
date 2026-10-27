@@ -63,9 +63,9 @@ export function Faq() {
 
         <BlurFade inView offset={14} blur="4px" duration={0.7} delay={0.1}>
           <Accordion
-            type="single"
-            collapsible
-            defaultValue="faq-0"
+            // "multiple": opening one answer never collapses another above it, which made the page jump.
+            type="multiple"
+            defaultValue={["faq-0"]}
             className="rounded-[1.75rem] bg-cream/70 px-6 sm:px-8"
           >
             {faqs.map((faq, index) => (
