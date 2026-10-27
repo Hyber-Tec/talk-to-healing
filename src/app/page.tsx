@@ -7,7 +7,6 @@ import { HowItWorks } from "@/components/sections/how-it-works";
 import { Insurance } from "@/components/sections/insurance";
 import { InsuranceStrip } from "@/components/sections/insurance-strip";
 import { Journal } from "@/components/sections/journal";
-import { ProgressShowcase } from "@/components/sections/progress-showcase";
 import { Services } from "@/components/sections/services";
 import { SiteFooter } from "@/components/sections/site-footer";
 import { SiteHeader } from "@/components/sections/site-header";
@@ -23,7 +22,6 @@ export default function Home() {
         <Empathy />
         <Services />
         <Approach />
-        <ProgressShowcase />
         <HowItWorks />
         <Team />
         <Insurance />
