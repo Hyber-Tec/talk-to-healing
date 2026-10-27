@@ -56,7 +56,7 @@ export default function TeamPage() {
                 </>
               }
             />
-            <ul className="mt-12 grid gap-5 sm:grid-cols-3">
+            <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {staff.map((member, index) => (
                 <li key={member.slug}>
                   <BlurFade inView offset={12} blur="4px" duration={0.6} delay={0.06 * index} className="h-full">

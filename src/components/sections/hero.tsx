@@ -35,7 +35,7 @@ export function Hero() {
     <section ref={ref} id="top" className="relative isolate overflow-hidden pt-28 pb-16 sm:pt-32 lg:pt-36 lg:pb-24">
       <HeroBackdrop />
 
-      <div className="mx-auto grid max-w-6xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10">
+      <div className="mx-auto grid max-w-6xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-2 lg:gap-10 xl:grid-cols-[1.1fr_0.9fr]">
         <div className="relative z-10 max-w-xl lg:max-w-none">
           <motion.p
             initial={{ opacity: 0, y: 8 }}
@@ -50,7 +50,7 @@ export function Hero() {
             Johns Creek, Georgia · In person & online
           </motion.p>
 
-          <h1 className="mt-7 font-serif text-[3.15rem] leading-[1.02] font-normal tracking-[-0.025em] text-ink sm:text-[4.25rem] lg:text-[5.1rem]">
+          <h1 className="mt-7 font-serif text-[3.15rem] leading-[1.02] font-normal tracking-[-0.025em] text-ink sm:text-[4.25rem] lg:text-[4.6rem] xl:text-[5.1rem]">
             <TextEffect as="span" per="word" preset="fade-in-blur" delay={0.15} speedSegment={0.45} className="block">
               Your safe
             </TextEffect>
@@ -152,7 +152,7 @@ export function Hero() {
                   </p>
                   <p className="mt-0.5 truncate text-[0.78rem] text-ink-soft">Founder & CEO</p>
                 </div>
-                <p className="hidden shrink-0 text-[0.78rem] font-medium text-sand-deep sm:block">
+                <p className="hidden shrink-0 text-[0.78rem] font-medium text-sand-deep sm:block lg:hidden xl:block">
                   EN · 한국어 · 日本語
                 </p>
               </div>
@@ -184,7 +184,7 @@ export function Hero() {
 
           <motion.div
             style={{ y: cardY }}
-            className="absolute bottom-[24%] left-0 w-[60%] max-w-[14.5rem] sm:left-[3%] sm:w-[48%]"
+            className="absolute bottom-[24%] left-[3%] hidden w-[48%] max-w-[14.5rem] sm:block lg:bottom-[15%] xl:bottom-[24%]"
           >
             <motion.div
               initial={{ opacity: 0, y: 16 }}

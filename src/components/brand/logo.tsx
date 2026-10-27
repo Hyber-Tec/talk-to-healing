@@ -17,7 +17,7 @@ export function Logo({ tone = "ink", className }: { tone?: "ink" | "light"; clas
         unoptimized
         loading={light ? "lazy" : "eager"}
       />
-      <span className="flex flex-col leading-none">
+      <span className="flex flex-col leading-none whitespace-nowrap">
         <span
           className={cn("font-serif text-[1.15rem] font-medium tracking-[-0.01em]", light ? "text-cream" : "text-ink")}
         >
