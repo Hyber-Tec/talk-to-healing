@@ -13,7 +13,6 @@ export const site = {
   description:
     "Compassionate, culturally sensitive talk therapy for individuals, couples, families, and teens in Johns Creek, Georgia. Book a free 15-minute consultation.",
   url: "https://www.talktohealcounseling.com",
-  bookingUrl: `${LEGACY_SITE}/book-online`,
   phone: { display: "404-369-3838", href: "tel:+14043693838" },
   fax: "470-780-4882",
   email: { general: "info@talktohealcounseling.com", billing: "Billing@talktohealcounseling.com" },
@@ -117,8 +116,8 @@ export const steps = [
     note: "In person in Johns Creek, or online from home.",
   },
   {
-    title: "Grow, and see it",
-    body: "Regular check-ins help you notice what is changing. We adjust along the way, so therapy keeps fitting your life.",
+    title: "Keep growing",
+    body: "Along the way, you and your therapist look back at what is changing and adjust together, so therapy keeps fitting your life.",
     note: "Your goals, your pace, your progress.",
   },
 ] as const;
@@ -132,7 +131,6 @@ export type TeamMember = {
   focus?: string;
   /** Languages the clinician's bio lists as spoken (English first). */
   languages: string[];
-  profileUrl: string;
   clinician: boolean;
 };
 
@@ -144,7 +142,6 @@ export const team: TeamMember[] = [
     role: "Founder & CEO",
     focus: "Immigrant families, relationships, trauma, and resilience",
     languages: ["English", "Korean", "Japanese"],
-    profileUrl: `${LEGACY_SITE}/about-4`,
     clinician: true,
   },
   {
@@ -154,7 +151,6 @@ export const team: TeamMember[] = [
     role: "Associate Therapist",
     focus: "Children, teens, and adults; anxiety, trauma, life transitions",
     languages: ["English", "Spanish"],
-    profileUrl: `${LEGACY_SITE}/about-4-14`,
     clinician: true,
   },
   {
@@ -164,7 +160,6 @@ export const team: TeamMember[] = [
     role: "Associate Therapist",
     focus: "Children, teens, and families; ADHD, autism, anxiety",
     languages: ["English"],
-    profileUrl: `${LEGACY_SITE}/about-4-16`,
     clinician: true,
   },
   {
@@ -174,7 +169,6 @@ export const team: TeamMember[] = [
     role: "Associate Therapist",
     focus: "Children and teens growing up between two cultures",
     languages: ["English", "Korean"],
-    profileUrl: `${LEGACY_SITE}/about-4-5`,
     clinician: true,
   },
   {
@@ -184,7 +178,6 @@ export const team: TeamMember[] = [
     role: "Associate Therapist",
     focus: "Kids 5+, teens, and young adults; ADHD, school stress, men's issues",
     languages: ["English", "Indonesian"],
-    profileUrl: `${LEGACY_SITE}/about-4-12`,
     clinician: true,
   },
   {
@@ -194,7 +187,6 @@ export const team: TeamMember[] = [
     role: "Associate Therapist",
     focus: "Art therapy, mindfulness, and seasons of change",
     languages: ["English", "Hindi"],
-    profileUrl: `${LEGACY_SITE}/about-4-1`,
     clinician: true,
   },
   {
@@ -204,7 +196,6 @@ export const team: TeamMember[] = [
     role: "Associate Therapist",
     focus: "Adults; trauma and EMDR, anxiety, addiction recovery",
     languages: ["English", "Tamil", "Malayalam", "Hindi"],
-    profileUrl: `${LEGACY_SITE}/about-4-2`,
     clinician: true,
   },
   {
@@ -214,7 +205,6 @@ export const team: TeamMember[] = [
     role: "Associate Therapist",
     focus: "Children and teens; ten years as a Georgia school counselor",
     languages: ["English"],
-    profileUrl: `${LEGACY_SITE}/about-4-4`,
     clinician: true,
   },
   {
@@ -224,7 +214,6 @@ export const team: TeamMember[] = [
     role: "Associate Therapist",
     focus: "Anxiety, trauma and PTSD, grief, ADHD",
     languages: ["English", "Korean"],
-    profileUrl: `${LEGACY_SITE}/about-4-6`,
     clinician: true,
   },
   {
@@ -234,7 +223,6 @@ export const team: TeamMember[] = [
     role: "Associate Therapist",
     focus: "Depression, anxiety, OCD; LGBTQ+-affirming care",
     languages: ["English"],
-    profileUrl: `${LEGACY_SITE}/about-4-7`,
     clinician: true,
   },
   {
@@ -244,7 +232,6 @@ export const team: TeamMember[] = [
     role: "Associate Therapist",
     focus: "Relationships, parenthood, grief, and life transitions",
     languages: ["English", "Gujarati"],
-    profileUrl: `${LEGACY_SITE}/about-1`,
     clinician: true,
   },
   {
@@ -252,7 +239,6 @@ export const team: TeamMember[] = [
     name: "Madison Reeves",
     role: "UGA MSW Graduate Student Intern",
     languages: ["English"],
-    profileUrl: `${LEGACY_SITE}/about-4-15`,
     clinician: false,
   },
   {
@@ -260,7 +246,6 @@ export const team: TeamMember[] = [
     name: "Amani Tanner",
     role: "Office Manager",
     languages: ["English"],
-    profileUrl: `${LEGACY_SITE}/about-4-9`,
     clinician: false,
   },
   {
@@ -268,7 +253,6 @@ export const team: TeamMember[] = [
     name: "Leanne Mathews",
     role: "High School Intern",
     languages: ["English"],
-    profileUrl: `${LEGACY_SITE}/about-4-10`,
     clinician: false,
   },
 ];
@@ -286,24 +270,46 @@ export const languages = (() => {
     .map(([language]) => language);
 })();
 
-export const insurers = [
-  "Aetna",
-  "Aetna Resources for Living",
-  "BlueCross BlueShield",
-  "Carelon Behavioral Health",
-  "CHAMPVA",
-  "Cigna",
-  "Cigna EAP",
-  "Curative",
-  "Evernorth",
-  "Humana",
-  "Kaiser Permanente",
-  "Lyra Health",
-  "Medicare",
-  "Oscar",
-  "TRICARE",
-  "UnitedHealthcare",
-] as const;
+/** Insurance brands with their logo in public/insurance/ and its width-to-height ratio. */
+export const insuranceBrands = {
+  aetna: { name: "Aetna", file: "aetna.svg", ratio: 5.07 },
+  bcbs: { name: "BlueCross BlueShield", file: "bcbs.svg", ratio: 5.13 },
+  carelon: { name: "Carelon Behavioral Health", file: "carelon.svg", ratio: 3.79 },
+  champva: { name: "CHAMPVA", file: "champva.png", ratio: 1.92 },
+  cigna: { name: "Cigna Healthcare", file: "cigna.svg", ratio: 1.83 },
+  curative: { name: "Curative", file: "curative.svg", ratio: 4.75 },
+  evernorth: { name: "Evernorth", file: "evernorth.svg", ratio: 5.39 },
+  humana: { name: "Humana", file: "humana.svg", ratio: 4.78 },
+  kaiser: { name: "Kaiser Permanente", file: "kaiser.svg", ratio: 8.83 },
+  lyra: { name: "Lyra Health", file: "lyra.svg", ratio: 1.71 },
+  medicare: { name: "Medicare", file: "medicare.svg", ratio: 6.97 },
+  oscar: { name: "Oscar", file: "oscar.svg", ratio: 4.16 },
+  tricare: { name: "TRICARE", file: "tricare.svg", ratio: 1.98 },
+  uhc: { name: "UnitedHealthcare", file: "uhc.svg", ratio: 3.14 },
+} as const;
+export type InsuranceBrand = keyof typeof insuranceBrands;
+
+/** Every plan the practice accepts, as its current site lists them. */
+export const plans: { name: string; brand: InsuranceBrand }[] = [
+  { name: "Aetna", brand: "aetna" },
+  { name: "Aetna Resources for Living", brand: "aetna" },
+  { name: "BlueCross BlueShield", brand: "bcbs" },
+  { name: "Carelon Behavioral Health", brand: "carelon" },
+  { name: "CHAMPVA", brand: "champva" },
+  { name: "Cigna", brand: "cigna" },
+  { name: "Cigna EAP", brand: "cigna" },
+  { name: "Curative", brand: "curative" },
+  { name: "Evernorth", brand: "evernorth" },
+  { name: "Humana", brand: "humana" },
+  { name: "Kaiser Permanente", brand: "kaiser" },
+  { name: "Lyra Health", brand: "lyra" },
+  { name: "Medicare", brand: "medicare" },
+  { name: "Oscar", brand: "oscar" },
+  { name: "TRICARE", brand: "tricare" },
+  { name: "UnitedHealthcare", brand: "uhc" },
+];
+
+export const insurers = plans.map((plan) => plan.name);
 
 export const posts = [
   {
@@ -339,7 +345,6 @@ export const posts = [
 ] as const;
 
 export const journalUrl = `${LEGACY_SITE}/blog-1`;
-export const teamUrl = `${LEGACY_SITE}/team-4`;
 
 export const crisis = {
   lifeline: { label: "988 Suicide & Crisis Lifeline", display: "988", href: "tel:988" },
@@ -396,3 +401,13 @@ export const faqs = [
     answer: `${site.shortName} is not a crisis service. If you are in danger or thinking about harming yourself, call or text 988, call 911, or call the Georgia Crisis & Access Line at 1-800-715-4225, available 24/7.`,
   },
 ] as const;
+
+/** "A", "A and B", or "A, B, and C". */
+export function listNames(names: string[]) {
+  if (names.length <= 2) return names.join(" and ");
+  return `${names.slice(0, -1).join(", ")}, and ${names.at(-1)}`;
+}
+
+export function findMember(slug: string) {
+  return team.find((member) => member.slug === slug);
+}

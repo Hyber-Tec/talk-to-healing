@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Figtree, Fraunces } from "next/font/google";
 
+import { BookingProvider } from "@/components/booking/booking-context";
 import { MotionProvider } from "@/components/motion/motion-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { faqs, site } from "@/lib/site";
@@ -102,7 +103,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to content
         </a>
         <MotionProvider>
-          <TooltipProvider>{children}</TooltipProvider>
+          <TooltipProvider>
+            <BookingProvider>{children}</BookingProvider>
+          </TooltipProvider>
         </MotionProvider>
         <script
           type="application/ld+json"

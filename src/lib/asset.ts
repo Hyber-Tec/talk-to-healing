@@ -6,3 +6,8 @@
 export function asset(path: `/${string}`) {
   return `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${path}`;
 }
+
+/** A team member's 4:5 portrait in public/photos/. */
+export function photoOf(slug: string) {
+  return asset(`/photos/${slug}.jpg`);
+}

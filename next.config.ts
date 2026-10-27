@@ -8,16 +8,16 @@ import type { NextConfig } from "next";
 const staticExport = process.env.STATIC_EXPORT === "1";
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
+// Cache Components and Partial Prefetching stay off: every page here is fully static, and keeping both
+// targets on the same rendering model means what you test in development is what the static export ships.
 const nextConfig: NextConfig = {
-  // Static export cannot prerender partially, so those features are on only for the server build.
-  cacheComponents: !staticExport,
-  partialPrefetching: !staticExport,
   env: {
     // Stamped at build time so the footer year needs no runtime clock.
     BUILD_YEAR: String(new Date().getFullYear()),
   },
   basePath,
-  ...(staticExport && { output: "export" }),
+  // Static hosts serve folders, so each page exports as <route>/index.html.
+  ...(staticExport && { output: "export", trailingSlash: true }),
   images: staticExport
     ? { unoptimized: true }
     : {

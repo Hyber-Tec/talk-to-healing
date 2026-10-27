@@ -1,12 +1,18 @@
 import { PiLifebuoy } from "react-icons/pi";
 
-import { Logo } from "@/components/brand/logo";
-import { crisis, journalUrl, nav, site, teamUrl } from "@/lib/site";
+import Link from "next/link";
 
-const explore = [...nav, { label: "Journal", href: journalUrl }];
-const practice = [
-  { label: "Book a consultation", href: site.bookingUrl },
-  { label: "Full team & bios", href: teamUrl },
+import { Logo } from "@/components/brand/logo";
+import { BookingButton } from "@/components/booking/booking-button";
+import { SectionLink } from "@/components/section-link";
+import { crisis, journalUrl, nav, site } from "@/lib/site";
+
+type FooterLink = { label: string; href: string } | { label: string; book: true };
+
+const explore: FooterLink[] = [...nav, { label: "Journal", href: journalUrl }];
+const practice: FooterLink[] = [
+  { label: "Book a consultation", book: true },
+  { label: "Meet the whole team", href: "/team" },
   { label: "Billing questions", href: `mailto:${site.email.billing}` },
   { label: "Get directions", href: site.address.mapUrl },
 ];
@@ -79,26 +85,38 @@ export function SiteFooter() {
   );
 }
 
-function FooterColumn({ title, links }: { title: string; links: readonly { label: string; href: string }[] }) {
+function FooterColumn({ title, links }: { title: string; links: FooterLink[] }) {
+  const linkClass = "text-ink-soft transition-colors hover:text-ink";
   return (
     <nav aria-label={title}>
       <p className="text-[0.75rem] font-semibold tracking-[0.2em] text-ink uppercase">{title}</p>
       <ul className="mt-5 flex flex-col gap-3">
-        {links.map((link) => {
-          const external = link.href.startsWith("http");
-          return (
-            <li key={link.label}>
+        {links.map((link) => (
+          <li key={link.label}>
+            {"book" in link ? (
+              <BookingButton variant="link" className={`h-auto p-0 text-base font-normal ${linkClass}`}>
+                {link.label}
+              </BookingButton>
+            ) : link.href.startsWith("#") ? (
+              <SectionLink hash={link.href as `#${string}`} className={linkClass}>
+                {link.label}
+              </SectionLink>
+            ) : link.href.startsWith("/") ? (
+              <Link href={link.href} className={linkClass}>
+                {link.label}
+              </Link>
+            ) : (
               <a
                 href={link.href}
-                target={external ? "_blank" : undefined}
-                rel={external ? "noopener noreferrer" : undefined}
-                className="text-ink-soft transition-colors hover:text-ink"
+                target={link.href.startsWith("http") ? "_blank" : undefined}
+                rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                className={linkClass}
               >
                 {link.label}
               </a>
-            </li>
-          );
-        })}
+            )}
+          </li>
+        ))}
       </ul>
     </nav>
   );
