@@ -29,6 +29,12 @@ Every fact on the page lives in `src/lib/site.ts`: contact details, services, te
 Change the content there, not in the components.
 Team portraits are in `public/photos/` (4:5, named after each person's slug) and insurer logos in `public/insurance/`.
 
+## Photography
+
+The hero photo is by [Clay Banks on Unsplash](https://unsplash.com/photos/cozy-armchair-by-a-window-with-a-garden-view-CjmHORCoIfw) (Unsplash License: free for commercial use, no attribution required).
+It is mirrored, cropped, and lightened for the page.
+Team portraits are the practice's own.
+
 ## Pages
 
 - `/`: the landing page.

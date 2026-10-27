@@ -8,8 +8,8 @@ import { PiArrowRight, PiChatsCircle, PiPhoneCall, PiShieldCheck, PiTranslate } 
 import { TextEffect } from "@/components/motion/text-effect";
 import { BookingButton } from "@/components/booking/booking-button";
 import { Button } from "@/components/ui/button";
-import { clinicians, languages, site } from "@/lib/site";
-import { photoOf } from "@/lib/asset";
+import { clinicians, languages } from "@/lib/site";
+import { asset, photoOf } from "@/lib/asset";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -19,7 +19,6 @@ const proof = [
   { icon: PiTranslate, label: `${languages.length} languages spoken` },
 ];
 
-const founder = clinicians[0];
 const stack = ["sarah-pak", "calvin-go", "jasmin-mata", "ayswarya-thampi"];
 
 export function Hero() {
@@ -130,32 +129,26 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.1, delay: 0.2, ease }}
-            className="arch-container absolute inset-y-0 right-[2%] w-[78%] sm:w-[68%]"
+            className="arch-container absolute inset-y-0 right-[11%] left-[11%] sm:right-[2%] sm:left-auto sm:w-[68%]"
           >
             <div className="absolute inset-0 translate-x-3.5 translate-y-3.5 arch bg-sand-soft" />
             <div className="relative h-full overflow-hidden arch bg-linen ring-1 ring-ink/5">
+              {/*
+               * Lead with the visitor's experience, not a clinician: a quiet seat waiting for you.
+               * Photo by Clay Banks on Unsplash (Unsplash License), mirrored, cropped, and lightened for the page.
+               * https://unsplash.com/photos/cozy-armchair-by-a-window-with-a-garden-view-CjmHORCoIfw
+               */}
               <Image
-                src={photoOf(founder.slug)}
-                alt={`${founder.name}, ${founder.credentials}, founder of ${site.shortName}`}
+                src={asset("/images/hero-alcove-seat.jpg")}
+                alt="A soft armchair in a quiet, sunlit alcove beside an open window"
                 fill
                 loading="eager"
                 fetchPriority="high"
                 quality={85}
                 sizes="(min-width: 1024px) 30vw, 68vw"
-                className="object-cover object-[50%_30%] saturate-[1.05] sepia-[.14]"
+                className="object-cover object-[50%_75%]"
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-sand/10 via-transparent to-ink-deep/25" />
-              <div className="absolute right-4 bottom-4 left-4 flex items-center justify-between gap-3 rounded-2xl bg-white/90 px-4 py-3 shadow-[0_10px_30px_-15px_rgba(29,55,60,0.5)] backdrop-blur">
-                <div className="min-w-0">
-                  <p className="truncate font-serif text-[1.05rem] leading-tight text-ink">
-                    {founder.name}, {founder.credentials}
-                  </p>
-                  <p className="mt-0.5 truncate text-[0.78rem] text-ink-soft">Founder & CEO</p>
-                </div>
-                <p className="hidden shrink-0 text-[0.78rem] font-medium text-sand-deep sm:block lg:hidden xl:block">
-                  EN · 한국어 · 日本語
-                </p>
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-b from-sand/15 via-transparent to-sand/10 mix-blend-soft-light" />
             </div>
           </motion.div>
 
